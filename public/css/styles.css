@@ -1,0 +1,205 @@
+*{
+    padding: 0;
+    margin: 0;
+
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.formulario-transparente {
+    background-color:transparent; 
+}
+
+
+.header {
+         background-color: #28a745; /* Cor verde ("success") */
+         padding: 20px;
+         text-align: center;
+     }
+     .menu {
+         background-color: #28a745;
+         padding: 10px;
+     }
+     .menu a {
+         color: #fff;
+         margin-right: 20px;
+     }
+     .user-info{
+         /*background-color: #fff;*/
+         text-align: right;
+     }
+     .corpo {
+         background-color: #fff;
+         padding: 20px;
+       margin: 20px 0;
+     }
+     .estatisticas, .criar-tarefa-form {
+         background-color: #fff;
+         padding: 20px;
+         margin: 20px 0;
+     }
+     /* Estilo para o menu sticky */
+.sticky-menu {
+    position: sticky;
+    top: 0; /* Ajuste a posição conforme necessário */
+
+    z-index: 100; /* Ajuste a ordem de empilhamento conforme necessário */
+}
+
+/* Estilo para o link ativo do menu */
+.menu-link.active {
+   
+    color: #fff;
+    font-weight: bold; 
+    border-radius: 5px;
+}
+
+
+     .anotacoes {
+         background-color: #fff;
+         padding: 20px;
+     }
+     .footer {
+         background-color: #28a745;
+         color: #fff;
+         padding: 10px;
+         text-align: center;
+     }
+     .btn-sm {
+         padding: 5px 10px;
+         font-size: 12px;
+     }
+
+     .barra-estatisticas {
+        display: flex;
+        height: 10px; /* Altura da barra de estatísticas */
+        width: 200px; /* Largura total da barra de estatísticas */
+        background-color: blue;
+    }
+    
+    .barra-item {
+        height: 100%;
+    }
+    
+    .concluidas {
+        background-color: #4CAF50; /* Verde para tarefas concluídas */
+    }
+    
+    .em-andamento {
+        background-color: #FFC107; /* Amarelo para tarefas em andamento */
+    }
+    
+    .em-atraso {
+        background-color: #F44336; /* Vermelho para tarefas em atraso */
+    }
+    
+    .legenda {
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    .legenda-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    .cor {
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+    }
+    
+    /* Estilize as cores da legenda conforme necessário */
+    .concluidas { background-color: #4CAF50; }
+    .em-andamento { background-color: #FFC107; }
+    .em-atraso { background-color: #F44336; }
+    
+    
+    
+
+
+/* Estilos para o menu */
+.menu {
+
+ color: #fff;
+ padding: 10px 0;
+}
+
+.menu a {
+ color: #fff;
+ margin-right: 20px;
+ text-decoration: none;
+}
+
+.user-info {
+ text-align: right;
+}
+.menu-icon i {
+    
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+/* Estilos para o ícone do menu */
+.menu-icon {
+ display: none;
+ cursor: pointer;
+ font-size: 24px;
+ color: #fff;
+ padding: 10px;
+ 
+}
+
+/* Estilos para telas menores */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        /* ... outras regras de estilo ... */
+    }
+
+    .menu.open {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Estilos para telas menores */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #28a745;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .menu.open {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        background-color: #28a745;
+    }
+
+    .menu-icon i {
+        cursor: pointer;
+    }
+}
