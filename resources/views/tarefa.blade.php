@@ -30,7 +30,7 @@
                     <a href="#tarefas" class="menu-link active"><i class="fas fa-list-ul"></i> Tarefas</a>
                     <a href="#estatisticas" class="menu-link"><i class="fas fa-chart-bar"></i> Estatísticas</a>
                     <a href="#criar-tarefa" class="menu-link"><i class="fas fa-tasks"></i> Criar Tarefa</a>
-                    <a href="#anotacoes" class="menu-link"><i class="fas fa-sticky-note"></i> Notas</a>
+                    <a href="#anotacoes" class="menu-link"><i class="fas fa-sticky-note"></i> Detalhes</a>
                     <a href="#sobre-nos" class="menu-link"><i class="fas fa-info-circle"></i> Sobre Nós</a>
                 </div>                          
             </div>
