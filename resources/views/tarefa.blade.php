@@ -35,7 +35,7 @@
                 </div>                          
             </div>
             <div class="col-md-6 user-info">
-                <a href="#"><i class="fas fa-user"></i> Leopoldo Jacob Matsinhe</a>
+                <a href="#"><i class="fas fa-user"></i> {{$user->name}}</a>
             </div>
             </div>
         </div>
@@ -59,26 +59,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($tarefas as $tarefa)
                         <tr>
-                            <td><a href="#">Tarefa 1</a></td>
-                            <td>Estudos</td>
-                            <td>Alta</td>
-                            <td>10/09/2023</td>
+                            <td><a href="#">{{$tarefa->tituloTarefa}}</a></td>
+                            <td>{{$tarefa->categoria}}</td>
+                            <td>{{$tarefa->prioridade}}</td>
+                            <td>{{$tarefa->dataConclusao}}</td>
                         </tr>
-                        <tr>
-                            <td><a href="#">Tarefa 2</a></td>
-                            <td>Musica</td>
-                            <td>Média</td>
-                            <td>10/09/2023</td>
-                        </tr>
+                        @endforeach
                         <!-- Adicione mais linhas conforme necessário para suas tarefas -->
                     </tbody>
                 </table>
-                <button class="btn btn-success btn-sm">Em Andamento</button>
-                <button class="btn btn-success btn-sm">Em Atraso</button>
-                <button class="btn btn-success btn-sm">Concluídas</button>
-                <button class="btn btn-success btn-sm">Prioridade</button>
-                <button class="btn btn-success btn-sm">Todas</button>
+                <a href="#" class="btn btn-success btn-sm">Em Andamento</a>
+                <a href="#" class="btn btn-success btn-sm">Em Atraso</a>
+                <a href="#" class="btn btn-success btn-sm">Concluídas</a>
+                <a href="#" class="btn btn-success btn-sm">Prioridade</a>
+                <a href="#" class="btn btn-success btn-sm">Todas</a>
                 <!-- Adicione aqui a lista de tarefas -->
             </div>
     
@@ -90,22 +86,22 @@
                 <h2>Estatísticas</h2>
                 <div class="row">
                     <div class="barra-estatisticas">
-                        <div class="barra-item concluidas" style="width: 100%;"></div>
-                        <div class="barra-item em-andamento" style="width: 0%;"></div>
-                        <div class="barra-item em-atraso" style="width: 0%;"></div>
+                        <div class="barra-item concluidas" style="width: {{$estatistica[1]}}%;"></div>
+                        <div class="barra-item em-andamento" style="width: {{$estatistica[0]}}%;"></div>
+                        <div class="barra-item em-atraso" style="width: {{$estatistica[2]}}%;"></div>
                     </div>
                     <div class="legenda">
                         <div class="legenda-item">
-                            <div class="cor concluidas"></div>
-                            <span>Tarefas Concluídas</span>
+                            <div class="cor em-andamento"></div>
+                            <span>Tarefas em Andamento {{$estatistica[0]}}%</span>
                         </div>
                         <div class="legenda-item">
-                            <div class="cor em-andamento"></div>
-                            <span>Tarefas em Andamento</span>
+                            <div class="cor concluidas"></div>
+                            <span>Tarefas Concluídas {{$estatistica[1]}}%</span>
                         </div>
                         <div class="legenda-item">
                             <div class="cor em-atraso"></div>
-                            <span>Tarefas em Atraso</span>
+                            <span>Tarefas em Atraso {{$estatistica[2]}}%</span>
                         </div>
                     </div>
                                    
@@ -116,25 +112,25 @@
         <div class="container scroll-section" id="criar-tarefa">
             <div class="criar-tarefa-form" id="criar-tarefa">
                 <h2>Criar Tarefa</h2>
-            <form action="" method="post">
+            <form action="criar-tarefas" method="post">
                 @csrf <!-- Token CSRF para proteção -->
                 <!-- Título da Tarefa -->
                 <div class="form-group">
                     <label for="titulo">Título da Tarefa:</label>
-                    <input type="text" id="titulo" name="titulo" class="form-control" required>
+                    <input type="text" id="titulo" name="tituloTarefa" class="form-control" required>
                 </div>
             
                 <!-- Descrição da Tarefa (opcional) -->
                 <div class="form-group">
                     <label for="descricao">Descrição da Tarefa:</label>
-                    <textarea id="descricao" name="descricao" class="form-control"></textarea>
+                    <textarea id="descricao" name="descricaoTarefa" class="form-control" required></textarea>
                 </div>
             
                 <!-- Data de Criação (não precisa ser preenchida no formulário) -->
                 <!-- Data de Conclusão -->
                 <div class="form-group">
                     <label for="data-conclusao">Data de Conclusão:</label>
-                    <input type="date" id="data-conclusao" name="data-conclusao" class="form-control" required>
+                    <input type="date" id="data-conclusao" name="dataConclusao" class="form-control" required>
                 </div>
             
                 <!-- Prioridade da Tarefa -->
@@ -164,11 +160,11 @@
                 <!-- Notas da Tarefa (opcional) -->
                 <div class="form-group">
                     <label for="notas">Notas:</label>
-                    <textarea id="notas" name="notas" class="form-control"></textarea><br>
+                    <textarea id="notas" name="notas" class="form-control" required></textarea><br>
                 </div>
             
                 <!-- Botão para criar a tarefa -->
-                <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+                <button type="submit" class="btn btn-success w-100">Criar Tarefa</button>
             </form>
             </div>
         </div>    

@@ -40,6 +40,7 @@
                             </div>
                             <button type="submit" class="btn btn-success w-100">Registrar</button>
                         </form>
+                        <span><a href="#">Termos</a></span>
                         <div class="mt-3">
                             <p>Já tem uma conta? <a href="{{route('login')}}">Entrar</a></p>
                         </div>

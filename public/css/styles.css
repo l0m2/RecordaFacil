@@ -75,7 +75,7 @@ html {
         display: flex;
         height: 10px; /* Altura da barra de estatísticas */
         width: 200px; /* Largura total da barra de estatísticas */
-        background-color: blue;
+        background-color: #f5f5f5;
     }
     
     .barra-item {

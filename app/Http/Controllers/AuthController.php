@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\cadastro;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +24,11 @@ class AuthController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        
         if(Auth::attempt($request->only('email','password'))){
             return redirect()->route('tarefas');
         }
+       return redirect()->route('login');
     }
 
     public function cadastro(Request $request){
@@ -34,12 +39,10 @@ class AuthController extends Controller
         ]);
        if($request['password'] == $request['password_confirmation']){
         if(User::create($request->all())){
+          Mail::to($request['email'])->send(new cadastro($request['name']));
            return redirect()->route('login');
         } }
             return redirect()->route('register');
-               
-       
-
     }
 
 
