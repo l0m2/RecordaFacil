@@ -13,17 +13,19 @@ class cadastro extends Mailable
 {
     use Queueable, SerializesModels;
    public $name;
+   public $email;
     /**
      * Create a new message instance.
      */
-    public function __construct($Name)
+    public function __construct($Name, $Email)
     {
         $this->name= $Name;
+        $this->email=$Email;
     }
     public function build()
     {
         return $this->subject('Boas vindas')
             ->view('emailCadastro')
-            ->with(['name' => $this->name]);
+            ->with(['name' => $this->name, 'email' => $this->email]);
     }
 }

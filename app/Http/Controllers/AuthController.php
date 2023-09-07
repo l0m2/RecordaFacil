@@ -39,7 +39,7 @@ class AuthController extends Controller
         ]);
        if($request['password'] == $request['password_confirmation']){
         if(User::create($request->all())){
-          Mail::to($request['email'])->send(new cadastro($request['name']));
+          Mail::to($request['email'])->send(new cadastro($request['name'], $request['email']));
            return redirect()->route('login');
         } }
             return redirect()->route('register');

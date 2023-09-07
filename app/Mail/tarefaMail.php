@@ -12,42 +12,42 @@ use Illuminate\Queue\SerializesModels;
 class tarefaMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $name;
+    public $tituloTarefa;
+    public $descricaoTarefa;
+    public $prioridade;
+    public $categoria;
+    public $dataInicio;
+    public $dataConclusao;
+    public $notas;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($Titulo, $DescricaoTarefa, $Name, $Prioridade, $Categoria, $DataInicio, $DataConclusao, $Notas)
     {
-        //
+        $this->tituloTarefa= $Titulo;
+        $this->name =$Name;
+        $this->descricaoTarefa =$DescricaoTarefa;
+        $this->prioridade = $Prioridade;
+        $this->categoria = $Categoria;
+        $this->dataInicio =$DataInicio;
+        $this->dataConclusao =$DataConclusao;
+        $this->notas =$Notas;
     }
-
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: 'Tarefa Mail',
-        );
-    }
+        return $this->subject('Tarefa Criada')
+            ->view('tarefaCriada')
+            ->with([
+                'tituloTarefa' => $this->tituloTarefa,
+                'name' => $this->name,
+                'descricaoTarefa' => $this->descricaoTarefa,
+                'prioridade'=> $this->prioridade,
+                'categoria' => $this->categoria,
+                'dataInicio' => $this->dataInicio,
+                'dataConclusao' => $this->dataConclusao,
+                'notas' => $this->notas
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
+            ]);
     }
 }

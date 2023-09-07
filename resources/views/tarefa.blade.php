@@ -126,7 +126,11 @@
                     <textarea id="descricao" name="descricaoTarefa" class="form-control" required></textarea>
                 </div>
             
-                <!-- Data de Criação (não precisa ser preenchida no formulário) -->
+                <div class="form-group">
+                    <label for="data-inicio">Data de Inicio:</label>
+                    <input type="date" id="data-inicio" name="dataInicio" class="form-control" required>
+                </div>
+
                 <!-- Data de Conclusão -->
                 <div class="form-group">
                     <label for="data-conclusao">Data de Conclusão:</label>

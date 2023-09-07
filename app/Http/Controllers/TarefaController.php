@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\tarefaMail;
 use App\Models\tarefa;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -37,6 +39,7 @@ class TarefaController extends Controller
         $validator = Validator::make($request->all(), [
             'tituloTarefa' => 'required|string|max:255',
             'descricaoTarefa' => 'nullable|string',
+            'dataInicio' => 'required|date',
             'dataConclusao' => 'required|date',
             'prioridade' => 'required|in:Baixa,Média,Alta',
             'categoria' => 'required|in:Trabalho,Estudo,Pessoal,Saúde,Outros',
@@ -44,8 +47,19 @@ class TarefaController extends Controller
         ]);
         $user = Auth::user(); 
         $request['user_id'] = $user->id;
-
+        
         if(tarefa::create($request->all())){
+            Mail::to($user->email)->send(new tarefaMail(
+                $request['tituloTarefa'], 
+                $request['descricaoTarefa'],
+                $user->name,
+                $request['prioridade'],
+                $request['categoria'],
+                $request['dataInicio'],
+                $request['dataConclusao'],
+                $request['notas'],
+            ));
+
             return redirect()->route('tarefas');
         }
     }

@@ -21,6 +21,7 @@ protected $table='tarefas';
 protected $fillable=[
 'tituloTarefa',
 'descricaoTarefa',
+'dataInicio',
 'dataConclusao',
 'prioridade',
 'categoria',
