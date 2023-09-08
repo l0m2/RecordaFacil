@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tarefas', function (Blueprint $table) {
-            $table->boolean('terminada')->default(false);
+            $table->boolean('concluida')->default(false);
         });
     }
 

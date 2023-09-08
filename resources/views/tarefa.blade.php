@@ -10,36 +10,42 @@
     <link href="{{asset('css/styles.css')}}" rel="stylesheet">
 </head>
 <body style="background-color: #f5f5f5;">
-    <div class="header">
-        <h1>Recorda Facil</h1>
-    </div>
+   
 
-    <div class="menu-icon">
-        <i class="fas fa-bars"></i>
-    </div>
-    
-    <div class="menu">
+    <nav class="navbar navbar-expand-lg navbar-success bg-success sticky-menu ">
+        <div class="container-fluid">
+          <a class="navbar-brand " href="#" id="icon">Recorda Facil</a>
+          <button class="navbar-toggler" type="button btn-white" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0  m-3 ">
+              
+              <li class="nav-item p-2">
+                <a href="#tarefas" class="menu-link active"><i class="fas fa-list-ul"></i> Tarefas</a>
+              </li>
 
-    </div>
-    <div class="menu sticky-menu">
-            <div class="row">
-                <div class="col-md-6">
-                <div class="menu sticky-menu">  
-                    <!-- Adicione classes semelhantes às outras seções -->
-                    
-                    <a href="#tarefas" class="menu-link active"><i class="fas fa-list-ul"></i> Tarefas</a>
-                    <a href="#estatisticas" class="menu-link"><i class="fas fa-chart-bar"></i> Estatísticas</a>
-                    <a href="#criar-tarefa" class="menu-link"><i class="fas fa-tasks"></i> Criar Tarefa</a>
-                    <a href="#anotacoes" class="menu-link"><i class="fas fa-sticky-note"></i> Detalhes</a>
-                    <a href="#sobre-nos" class="menu-link"><i class="fas fa-info-circle"></i> Sobre Nós</a>
-                </div>                          
-            </div>
-            <div class="col-md-6 user-info">
+              <li class="nav-item p-2">
+                <a href="#estatisticas" class="menu-link"><i class="fas fa-chart-bar"></i> Estatísticas</a>
+              </li>
+              <li class="nav-item p-2">
+                <a href="#criar-tarefa" class="menu-link"><i class="fas fa-tasks"></i> Criar Tarefa</a>
+              </li>
+              <li class="nav-item p-2">
+                <a href="#anotacoes" class="menu-link"><i class="fas fa-info-circle"></i> Detalhes</a>
+              </li>
+              <li class="nav-item p-2">
+                <a href="#sobre-nos" class="menu-link"><i class="fas fa-user-circle"></i> Sobre Nós</a>
+              </li>
+              
+              
+            </ul>
+            <div class="col-md-6 user-info d-flex justify-content-end">
                 <a href="#"><i class="fas fa-user"></i> {{$user->name}}</a>
             </div>
-            </div>
+          </div>
         </div>
-    </div>
+      </nav>
 
 
 
@@ -70,11 +76,13 @@
                         <!-- Adicione mais linhas conforme necessário para suas tarefas -->
                     </tbody>
                 </table>
-                <a href="#" class="btn btn-success btn-sm">Em Andamento</a>
-                <a href="#" class="btn btn-success btn-sm">Em Atraso</a>
-                <a href="#" class="btn btn-success btn-sm">Concluídas</a>
-                <a href="#" class="btn btn-success btn-sm">Prioridade</a>
-                <a href="#" class="btn btn-success btn-sm">Todas</a>
+                <div class="btns" >
+                    <a href="#" class="btn btn-success btn-sm p-2 " style="font-size: 15px">Em Andamento</a>
+                    <a href="#" class="btn btn-success btn-sm p-2" style="font-size: 15px">Em Atraso</a>
+                    <a href="#" class="btn btn-success btn-sm p-2" style="font-size: 15px">Concluídas</a>
+                    <a href="#" class="btn btn-success btn-sm p-2" style="font-size: 15px">Prioridade</a>
+                    <a href="#" class="btn btn-success btn-sm p-2" style="font-size: 15px">Todas</a>
+                </div>
                 <!-- Adicione aqui a lista de tarefas -->
             </div>
     
@@ -89,6 +97,7 @@
                         <div class="barra-item concluidas" style="width: {{$estatistica[1]}}%;"></div>
                         <div class="barra-item em-andamento" style="width: {{$estatistica[0]}}%;"></div>
                         <div class="barra-item em-atraso" style="width: {{$estatistica[2]}}%;"></div>
+                        <div class="barra-item em-espera" style="width: {{$estatistica[3]}}%;"></div>
                     </div>
                     <div class="legenda">
                         <div class="legenda-item">
@@ -98,6 +107,10 @@
                         <div class="legenda-item">
                             <div class="cor concluidas"></div>
                             <span>Tarefas Concluídas {{$estatistica[1]}}%</span>
+                        </div>
+                        <div class="legenda-item">
+                            <div class="cor em-espera"></div>
+                            <span>Tarefas em Espera {{$estatistica[3]}}%</span>
                         </div>
                         <div class="legenda-item">
                             <div class="cor em-atraso"></div>

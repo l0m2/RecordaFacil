@@ -114,6 +114,7 @@ html {
     .concluidas { background-color: #4CAF50; }
     .em-andamento { background-color: #FFC107; }
     .em-atraso { background-color: #F44336; }
+    .em-espera { background-color:aqua; }
     
     
     
@@ -123,7 +124,7 @@ html {
 .menu {
 
  color: #fff;
- padding: 10px 0;
+ 
 }
 
 .menu a {
@@ -152,29 +153,12 @@ html {
  cursor: pointer;
  font-size: 24px;
  color: #fff;
- padding: 10px;
+
  
 }
 
 /* Estilos para telas menores */
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-        /* ... outras regras de estilo ... */
-    }
 
-    .menu.open {
-        display: flex;
-    }
-
-    .menu-icon {
-        display: block;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
 
 /* Estilos para telas menores */
 @media (max-width: 768px) {
@@ -183,11 +167,9 @@ html {
         flex-direction: column;
         background-color: #28a745;
         position: absolute;
-        top: 50px;
-        left: 0;
-        right: 0;
+       
         text-align: center;
-        padding: 10px 0;
+       
     }
 
     .menu.open {
@@ -202,4 +184,14 @@ html {
     .menu-icon i {
         cursor: pointer;
     }
+}
+
+a{
+    text-decoration: none;
+   /* color: white;*/
+}
+
+#icon{
+    font-weight: bold;
+    color: white;
 }

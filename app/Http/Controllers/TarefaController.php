@@ -49,7 +49,7 @@ class TarefaController extends Controller
         $request['user_id'] = $user->id;
         
         if(tarefa::create($request->all())){
-            Mail::to($user->email)->send(new tarefaMail(
+             Mail::to($user->email)->send(new tarefaMail(
                 $request['tituloTarefa'], 
                 $request['descricaoTarefa'],
                 $user->name,
@@ -101,11 +101,13 @@ class TarefaController extends Controller
         $tarefas = Tarefa::where('user_id', $user->id)->get();
         $estatistica = array();
         $concluidasE = 0;
+        $esperaE = 0;
         $andamentoE = 0;
         $atrasoE = 0;
         $concluidas = 0;
         $andamento = 0;
         $atraso = 0;
+        $espera=0;
         $nr = count($tarefas); // Corrigido para usar a função count()
     
         foreach ($tarefas as $tarefa) { // Iterar sobre cada tarefa
@@ -115,6 +117,10 @@ class TarefaController extends Controller
             } elseif ($tarefa->terminada == false && $tarefa->dataConclusao < date('Y-m-d')) {
                 $atraso = $atraso + 1;
                 $atrasoE = ($atraso * 100) / $nr;
+            }
+            elseif($tarefa->terminada == false && $tarefa->dataInicio > date('Y-m-d')){
+              $espera = $espera + 1;
+              $esperaE = ($espera * 100) / $nr;
             } else {
                 $andamento = $andamento + 1;
                 $andamentoE= ($andamento * 100) / $nr;
@@ -124,7 +130,7 @@ class TarefaController extends Controller
         $estatistica[0] = number_format($andamentoE,1, '.', '');
         $estatistica[1] = number_format($concluidasE,1, '.', '');
         $estatistica[2] = number_format($atrasoE,1, '.', '');
-    
+        $estatistica[3] = number_format($esperaE,1, '.', '');
         return $estatistica; // Removido os parênteses ()
     }
 }
