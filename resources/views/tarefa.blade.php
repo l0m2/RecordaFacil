@@ -36,9 +36,7 @@
               </li>
               <li class="nav-item p-2">
                 <a href="#sobre-nos" class="menu-link"><i class="fas fa-user-circle"></i> Sobre Nós</a>
-              </li>
-              
-              
+              </li>      
             </ul>
             <div class="col-md-6 user-info d-flex justify-content-end">
                 <a href="#"><i class="fas fa-user"></i> {{$user->name}}</a>
